@@ -1,6 +1,11 @@
 package com.example.finalmobile.models;
 
-public class MovieModel {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
+public class MovieModel implements Parcelable {
 
     private String title;
     private String poster_path;
@@ -40,5 +45,15 @@ public class MovieModel {
 
     public String getMovie_overview() {
         return movie_overview;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel parcel, int i) {
+
     }
 }
