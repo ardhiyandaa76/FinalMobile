@@ -23,6 +23,27 @@ public class MovieModel implements Parcelable {
         this.movie_overview = movie_overview;
     }
 
+    protected MovieModel(Parcel in) {
+        title = in.readString();
+        poster_path = in.readString();
+        release_date = in.readString();
+        movie_id = in.readInt();
+        vote_average = in.readFloat();
+        movie_overview = in.readString();
+    }
+
+    public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
+        @Override
+        public MovieModel createFromParcel(Parcel in) {
+            return new MovieModel(in);
+        }
+
+        @Override
+        public MovieModel[] newArray(int size) {
+            return new MovieModel[size];
+        }
+    };
+
     public String getTitle() {
         return title;
     }
@@ -54,6 +75,11 @@ public class MovieModel implements Parcelable {
 
     @Override
     public void writeToParcel(@NonNull Parcel parcel, int i) {
-
+        parcel.writeString(title);
+        parcel.writeString(poster_path);
+        parcel.writeString(release_date);
+        parcel.writeInt(movie_id);
+        parcel.writeFloat(vote_average);
+        parcel.writeString(movie_overview);
     }
 }
