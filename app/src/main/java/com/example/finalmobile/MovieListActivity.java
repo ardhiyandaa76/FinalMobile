@@ -42,16 +42,16 @@ public class MovieListActivity extends AppCompatActivity {
                 .searchMovie(
                         Credentials.API_KEY,
                         "Jack Reacher",
-                        1);
+                        "1");
 
      responseCall.enqueue(new Callback<MovieSearchResponse>() {
          @Override
          public void onResponse(Call<MovieSearchResponse> call, Response<MovieSearchResponse> response) {
              if(response.code() == 200){
-                 Log.v("Tag", "the response" + response.body().toString());
+                 Log.v("Tag", "the response " + response.body().toString());
                  List<MovieModel> movies = new ArrayList<>(response.body().getMovies());
                  for(MovieModel movie: movies){
-                     Log.v("Tag", "the release date" + movie.getRelease_date());
+                     Log.v("Tag", "the release date " + movie.getRelease_date());
                  }
              }
              else{
