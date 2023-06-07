@@ -35,24 +35,12 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         ((MovieViewHolder)holder).title.setText(mMovies.get(i).getTitle());
         ((MovieViewHolder)holder).release_date.setText(mMovies.get(i).getRelease_date());
-
-
-        // Their is an error in runtime duration
-        // Let's Fix this error
         ((MovieViewHolder)holder).duration.setText(mMovies.get(i).getOriginal_language());
-
-        // vote average is over 10, and our rating bar is over 5 stars: dividing by 2
         ((MovieViewHolder)holder).ratingBar.setRating((mMovies.get(i).getVote_average())/2);
-
-
-        // ImageView: Using Glide Library
         Glide.with(holder.itemView.getContext())
                 .load( "https://image.tmdb.org/t/p/w500/"
                         +mMovies.get(i).getPoster_path())
                 .into(((MovieViewHolder)holder).imageView);
-
-
-
     }
 
     @Override
@@ -62,7 +50,6 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         }
         return 0;
     }
-
 
     public void setmMovies(List<MovieModel> mMovies) {
         this.mMovies = mMovies;
