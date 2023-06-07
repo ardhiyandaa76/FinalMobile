@@ -1,5 +1,6 @@
 package com.example.finalmobile;
 
+import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
 public class BackgroundThreat {
@@ -11,5 +12,8 @@ public class BackgroundThreat {
         return instance;
     }
 
-    private final ScheduledExecutorService
+    private final ScheduledExecutorService mNetworkIO = Executors.newScheduledThreadPool(3);
+    public ScheduledExecutorService networkIO(){
+        return mNetworkIO;
+    }
 }
