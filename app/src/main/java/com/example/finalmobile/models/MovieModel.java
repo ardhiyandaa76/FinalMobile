@@ -5,6 +5,8 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import com.google.gson.annotations.SerializedName;
+
 public class MovieModel implements Parcelable {
 
     private String title;
@@ -12,7 +14,12 @@ public class MovieModel implements Parcelable {
     private String release_date;
     private int movie_id;
     private float vote_average;
+
+
+    @SerializedName("overview")
     private String movie_overview;
+
+    private String original_language;
 
     public MovieModel(String title, String poster_path, String release_date, int movie_id, float vote_average, String movie_overview) {
         this.title = title;
@@ -81,5 +88,17 @@ public class MovieModel implements Parcelable {
         parcel.writeInt(movie_id);
         parcel.writeFloat(vote_average);
         parcel.writeString(movie_overview);
+    }
+
+    @Override
+    public String toString() {
+        return "MovieModel{" +
+                "title='" + title + '\'' +
+                ", poster_path='" + poster_path + '\'' +
+                ", release_date='" + release_date + '\'' +
+                ", movie_id=" + movie_id +
+                ", vote_average=" + vote_average +
+                ", movie_overview='" + movie_overview + '\'' +
+                '}';
     }
 }
