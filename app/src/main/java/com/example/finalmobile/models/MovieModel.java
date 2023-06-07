@@ -25,14 +25,15 @@ public class MovieModel implements Parcelable {
         this.poster_path = poster_path;
         this.vote_average = vote_average;
     }
-    
-    public MovieModel(String title, String poster_path, String release_date, int movie_id, float vote_average, String movie_overview) {
+
+    public MovieModel(String title, String poster_path, String release_date, int movie_id, float vote_average, String movie_overview, String original_language) {
         this.title = title;
         this.poster_path = poster_path;
         this.release_date = release_date;
         this.movie_id = movie_id;
         this.vote_average = vote_average;
         this.movie_overview = movie_overview;
+        this.original_language = original_language;
     }
 
     protected MovieModel(Parcel in) {
