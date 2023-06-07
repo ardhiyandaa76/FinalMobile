@@ -1,13 +1,13 @@
 package com.example.finalmobile.viewmodels;
 
 import androidx.lifecycle.LiveData;
-
+import androidx.lifecycle.ViewModel;
 import com.example.finalmobile.models.MovieModel;
 import com.example.finalmobile.repositories.MovieRepository;
 
 import java.util.List;
 
-public class MovieListViewModel {
+public class MovieListViewModel extends ViewModel {
     private MovieRepository movieRepository;
 
     public MovieListViewModel(){
