@@ -1,9 +1,11 @@
 package com.example.finalmobile.utils;
 
+import com.example.finalmobile.models.MovieModel;
 import com.example.finalmobile.response.MovieSearchResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface MovieApi {
@@ -16,5 +18,20 @@ public interface MovieApi {
             @Query("query") String query,
             @Query("page") String page
     );
+
+    @GET("/3/movie/popular")
+    Call<MovieSearchResponse> getPopular(
+            @Query("api_key") String key,
+            @Query("page") int page
+    );
+
+    @GET("3/movie/{movie_id}?")
+    Call<MovieModel> getMovie(
+            @Path("movie_id") int movie_id,
+            @Query("api_key") String api_key
+    );
+
+    @GET("3/tv/airing_today")
+
 
 }
