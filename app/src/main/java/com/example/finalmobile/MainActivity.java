@@ -44,6 +44,15 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        favBtn.setOnClickListener(v -> {
+            Fragment fragment1 =
+                    fragmentManager.findFragmentByTag(FavouriteFragment.class.getSimpleName());
+            if(!(fragment1 instanceof FavouriteFragment)){
+                fragmentManager.beginTransaction().replace(R.id.frame_layout, new FavouriteFragment()
+                        ,FavouriteFragment.class.getSimpleName()).commit();
+            }
+        });
+
     }
 
 
