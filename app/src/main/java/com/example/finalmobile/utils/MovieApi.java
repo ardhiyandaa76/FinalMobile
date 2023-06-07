@@ -36,4 +36,10 @@ public interface MovieApi {
             @Path("tv_id") int tv_id,
             @Query("api_key") String api_key
     );
+    @GET("3/search/tv")
+    Call<MovieSearchResponse> searchTv(
+            @Query("api_key") String key,
+            @Query("query") String query,
+            @Query("page") String page
+    );
 }

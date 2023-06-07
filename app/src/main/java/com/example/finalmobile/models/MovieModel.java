@@ -61,6 +61,10 @@ public class MovieModel implements Parcelable {
         return title;
     }
 
+    public String getOriginal_language() {
+        return original_language;
+    }
+
     public String getPoster_path() {
         return poster_path;
     }
