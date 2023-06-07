@@ -1,6 +1,7 @@
 package com.example.finalmobile.utils;
 
 import com.example.finalmobile.models.MovieModel;
+import com.example.finalmobile.models.TvModel;
 import com.example.finalmobile.response.MovieSearchResponse;
 
 import retrofit2.Call;
@@ -30,8 +31,9 @@ public interface MovieApi {
             @Path("movie_id") int movie_id,
             @Query("api_key") String api_key
     );
-
     @GET("3/tv/airing_today")
-
-
+    Call<TvModel> getTv(
+            @Path("tv_id") int tv_id,
+            @Query("api_key") String api_key
+    );
 }
