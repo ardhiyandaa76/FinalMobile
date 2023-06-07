@@ -26,7 +26,23 @@ public class MainActivity extends AppCompatActivity {
             ,MovieListFragment.class.getSimpleName()).commit();
         }
 
+        movieBtn.setOnClickListener(v -> {
+            Fragment fragment1 =
+                    fragmentManager.findFragmentByTag(MovieListFragment.class.getSimpleName());
+            if(!(fragment1 instanceof MovieListFragment)){
+                fragmentManager.beginTransaction().replace(R.id.frame_layout, movieListFragment
+                        ,MovieListFragment.class.getSimpleName()).commit();
+            }
+        });
 
+        tvBtn.setOnClickListener(v -> {
+            Fragment fragment1 =
+                    fragmentManager.findFragmentByTag(TvListFragment.class.getSimpleName());
+            if(!(fragment1 instanceof TvListFragment)){
+                fragmentManager.beginTransaction().replace(R.id.frame_layout, new TvListFragment()
+                        ,TvListFragment.class.getSimpleName()).commit();
+            }
+        });
 
     }
 
