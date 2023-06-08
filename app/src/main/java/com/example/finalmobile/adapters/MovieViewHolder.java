@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.finalmobile.R;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
     // Widgets
     TextView title, release_date, duration;
     ImageView imageView;

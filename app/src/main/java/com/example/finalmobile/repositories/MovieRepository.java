@@ -10,22 +10,26 @@ import java.util.List;
 
 public class MovieRepository {
     private static MovieRepository instance;
-    private static MovieApiClient movieApiClient;
+
+    private MovieApiClient movieApiClient;
 
     private String mQuery;
     private int mPageNumber;
 
 
-    public static MovieRepository getInstance(){
-        if(instance == null){
+    public static MovieRepository getInstance() {
+        if (instance == null) {
             instance = new MovieRepository();
         }
         return instance;
+
     }
 
     private MovieRepository(){
+
         movieApiClient = MovieApiClient.getInstance();
     }
+
 
     public LiveData<List<MovieModel>> getMovies(){
         return movieApiClient.getMovies();
@@ -37,14 +41,22 @@ public class MovieRepository {
         movieApiClient.searchMoviesApi(query, pageNumber);
     }
 
+
     public void searchNextPage(){
-        searchMovieApi(mQuery, mPageNumber + 1);
+        searchMovieApi(mQuery, mPageNumber+1);
     }
-    public LiveData<List<MovieModel>> getPop() {
+
+
+
+
+
+    public LiveData<List<MovieModel>> getPop(){
         return movieApiClient.getPop();
     }
-    public void searchMoviePop(int pageNumber){
+
+    public void serachMoviePop(int pageNumber){
+
         mPageNumber = pageNumber;
-        movieApiClient.searchMoviesPop(pageNumber);
+        movieApiClient.searchMoviesPop( pageNumber);
     }
 }

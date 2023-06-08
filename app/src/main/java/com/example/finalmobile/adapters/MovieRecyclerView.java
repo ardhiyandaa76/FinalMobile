@@ -15,7 +15,6 @@ import com.example.finalmobile.utils.Credentials;
 import java.util.List;
 
 public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
-
     private List<MovieModel> mMovies;
     private OnMovieListener onMovieListener;
 
@@ -97,7 +96,6 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     }
 
 
-    // Getting the id of the movie clicked
     public MovieModel getSelectedMovie(int position){
         if (mMovies != null){
             if (mMovies.size() > 0){
@@ -117,4 +115,5 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
         else
             return DISPLAY_SEARCH;
     }
+
 }

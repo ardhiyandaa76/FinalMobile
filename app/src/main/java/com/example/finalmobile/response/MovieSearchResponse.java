@@ -12,15 +12,20 @@ public class MovieSearchResponse {
     @Expose()
     private int total_count;
 
+
     @SerializedName("results")
     @Expose()
     private List<MovieModel> movies;
 
+
     public int getTotal_count(){
         return total_count;
     }
+
+
     public List<MovieModel> getMovies(){
         return movies;
+
     }
 
     @Override

@@ -10,8 +10,6 @@ import retrofit2.http.Query;
 
 public interface MovieApi {
 
-    //Search For Movies
-    //https://api.themoviedb.org/3/search/movie?query=Jack+Reacher&api_key=72f23821b529b1058cffcd50b9cdff27
     @GET("/3/search/movie")
     Call<MovieSearchResponse> searchMovie(
             @Query("api_key") String key,
@@ -23,6 +21,7 @@ public interface MovieApi {
     Call<MovieSearchResponse> getPopular(
             @Query("api_key") String key,
             @Query("page") int page
+
     );
 
     @GET("3/movie/{movie_id}?")
