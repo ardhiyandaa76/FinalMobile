@@ -7,4 +7,3 @@ public interface OnFavoriteItemClickListener {
     void onItemClick(MovieModel movie);
     void onItemClickTv(TvModel tv);
 }
-}
