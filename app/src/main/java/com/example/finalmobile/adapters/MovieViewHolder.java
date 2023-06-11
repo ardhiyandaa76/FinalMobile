@@ -12,12 +12,9 @@ import com.example.finalmobile.R;
 
 public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    // Widgets
-    TextView title, release_date, duration;
+    TextView title, release_date;
     ImageView imageView;
     RatingBar ratingBar;
-
-    // Click Listener
     OnMovieListener onMovieListener;
 
 
@@ -25,14 +22,11 @@ public class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnC
 
     public MovieViewHolder(@NonNull View itemView, OnMovieListener onMovieListener) {
         super(itemView);
-
-
         this.onMovieListener = onMovieListener;
-
-
         imageView = itemView.findViewById(R.id.movie_img);
         ratingBar = itemView.findViewById(R.id.rating_bar);
-
+        title = itemView.findViewById(R.id.titleMovie);
+        release_date = itemView.findViewById(R.id.releaseDate);
         itemView.setOnClickListener(this);
 
     }

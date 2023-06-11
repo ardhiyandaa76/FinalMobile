@@ -55,12 +55,10 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int i) {
 
         int itemViewType = getItemViewType(i);
+
         if (itemViewType == DISPLAY_SEARCH){
-
-            // vote average is over 10, and our rating bar is over 5 stars: dividing by 2
+            ((MovieViewHolder)holder).title.setText(mMovies.get(i).getTitle());
             ((MovieViewHolder)holder).ratingBar.setRating((mMovies.get(i).getVote_average())/2);
-
-            // ImageView: Using Glide Library
             Glide.with(holder.itemView.getContext())
                     .load( "https://image.tmdb.org/t/p/w500/"
                             +mMovies.get(i).getPoster_path())
@@ -68,13 +66,10 @@ public class MovieRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHol
 
         }else{
             ((Popular_view_holder)holder).ratingBar_pop.setRating(mMovies.get(i).getVote_average());
-
-            // ImageView: Using Glide Library
             Glide.with(holder.itemView.getContext())
                     .load( "https://image.tmdb.org/t/p/w500/"
                             +mMovies.get(i).getPoster_path())
                     .into(((Popular_view_holder)holder).imageView_pop);
-
         }
 
 
