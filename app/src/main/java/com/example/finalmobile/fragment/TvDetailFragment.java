@@ -16,7 +16,7 @@ import com.example.finalmobile.db.DatabaseHelperTv;
 import com.example.finalmobile.models.TvModel;
 
 public class TvDetailFragment extends Fragment {
-    private ImageView imageViewDetails;
+    private ImageView imageViewDetails, backButtonTvs;
     private TextView titleDetails, descDetails, releaseDate;
     private RatingBar ratingBarDetails;
     private ImageView favouriteImage;
@@ -34,6 +34,7 @@ public class TvDetailFragment extends Fragment {
         descDetails = view.findViewById(R.id.textView_desc_details);
         ratingBarDetails = view.findViewById(R.id.ratingBar_details);
         releaseDate = view.findViewById(R.id.releaseDate);
+        backButtonTvs = view.findViewById(R.id.backBtnTv);
         favouriteImage = view.findViewById(R.id.favouriteButton);
 
         databaseHelper = new DatabaseHelperTv(getActivity());
@@ -58,6 +59,13 @@ public class TvDetailFragment extends Fragment {
                         onFavoriteChangedListener.onFavoriteChanged(tvTitle, isFavorite);
                     }
                 }
+            }
+        });
+
+        backButtonTvs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().onBackPressed();
             }
         });
 

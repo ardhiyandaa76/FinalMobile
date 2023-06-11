@@ -18,9 +18,10 @@ import com.example.finalmobile.models.MovieModel;
 import java.util.List;
 
 public class MovieDetailFragment extends Fragment {
-    private ImageView imageViewDetails, favouriteImage;
+    private ImageView imageViewDetails, favouriteImage, backButtonMovies;
     private TextView titleDetails, descDetails, releaseDate;
     private RatingBar ratingBarDetails;
+
     private boolean isFavorite = false;
     private OnFavoriteChangedListener onFavoriteChangedListener;
     private DatabaseHelper databaseHelper;
@@ -35,6 +36,7 @@ public class MovieDetailFragment extends Fragment {
         descDetails = view.findViewById(R.id.textView_desc_details);
         ratingBarDetails = view.findViewById(R.id.ratingBar_details);
         releaseDate = view.findViewById(R.id.releaseDate);
+        backButtonMovies = view.findViewById(R.id.backBtnMovie);
         favouriteImage = view.findViewById(R.id.favouriteButton);
 
         databaseHelper = new DatabaseHelper(getActivity());
@@ -61,6 +63,15 @@ public class MovieDetailFragment extends Fragment {
                         onFavoriteChangedListener.onFavoriteChanged(movieTitle, isFavorite);
                     }
                 }
+            }
+        });
+
+        //Back button to MovieListFragment
+        backButtonMovies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //back to MovieListFragment
+                getActivity().onBackPressed();
             }
         });
 
