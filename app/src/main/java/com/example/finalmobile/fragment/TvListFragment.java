@@ -82,7 +82,7 @@ public class TvListFragment extends Fragment implements OnMovieListener {
     private void ConfigureRecyclerView() {
         tvRecyclerAdapter = new TvRecyclerView(this);
         recyclerView.setAdapter(tvRecyclerAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
