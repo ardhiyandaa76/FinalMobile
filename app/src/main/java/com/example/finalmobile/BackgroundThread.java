@@ -3,11 +3,11 @@ package com.example.finalmobile;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 
-public class BackgroundThreat {
-    private static BackgroundThreat instance;
-    public static BackgroundThreat getInstance(){
+public class BackgroundThread {
+    private static BackgroundThread instance;
+    public static BackgroundThread getInstance(){
         if(instance == null){
-            instance = new BackgroundThreat();
+            instance = new BackgroundThread();
         }
         return instance;
     }

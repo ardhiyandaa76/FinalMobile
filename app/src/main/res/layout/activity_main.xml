@@ -4,9 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MovieListActivity">
+    tools:context=".MainActivity">
 
-    <!-- let's add the toolbar -->
     <TextView
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -17,8 +16,10 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:fontFamily="serif"
-        android:text="Choose a Movie for Today"
-        android:textSize="48sp"
+        android:text="POPULAR MOVIE"
+        android:textSize="30sp"
+        android:gravity="center"
+        android:textStyle="bold"
         />
 
     <androidx.appcompat.widget.Toolbar

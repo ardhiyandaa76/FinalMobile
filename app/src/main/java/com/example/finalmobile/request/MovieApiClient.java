@@ -5,7 +5,7 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.example.finalmobile.BackgroundThreat;
+import com.example.finalmobile.BackgroundThread;
 import com.example.finalmobile.models.MovieModel;
 import com.example.finalmobile.response.MovieSearchResponse;
 import com.example.finalmobile.utils.Credentials;
@@ -44,7 +44,6 @@ public class MovieApiClient {
         return mMovies;
     }
 
-
     public LiveData<List<MovieModel>> getPop(){
         return mMoviesPop;
     }
@@ -60,14 +59,13 @@ public class MovieApiClient {
 
         retrieveMoviesRunnable = new RetrieveMoviesRunnable(query, pageNumber);
 
-        final Future myHandler = BackgroundThreat.getInstance().networkIO().submit(retrieveMoviesRunnable);
+        final Future myHandler = BackgroundThread.getInstance().networkIO().submit(retrieveMoviesRunnable);
 
-        BackgroundThreat.getInstance().networkIO().schedule(new Runnable() {
+        BackgroundThread.getInstance().networkIO().schedule(new Runnable() {
             @Override
             public void run() {
                 // Cancelling the retrofit call
                 myHandler.cancel(true);
-
             }
         }, 3000, TimeUnit.MILLISECONDS);
 
@@ -84,9 +82,8 @@ public class MovieApiClient {
 
         retrieveMoviesRunnablePop = new RetrieveMoviesRunnablePop(pageNumber);
 
-        final Future myHandler2 = BackgroundThreat.getInstance().networkIO().submit(retrieveMoviesRunnablePop);
-
-        BackgroundThreat.getInstance().networkIO().schedule(new Runnable() {
+        final Future myHandler2 = BackgroundThread.getInstance().networkIO().submit(retrieveMoviesRunnablePop);
+        BackgroundThread.getInstance().networkIO().schedule(new Runnable() {
             @Override
             public void run() {
                 // Cancelling the retrofit call
@@ -95,18 +92,12 @@ public class MovieApiClient {
             }
         }, 1000, TimeUnit.MILLISECONDS);
 
-
     }
 
-
-
     private class RetrieveMoviesRunnable implements Runnable{
-
         private String query;
         private int pageNumber;
         boolean cancelRequest;
-
-
         public RetrieveMoviesRunnable(String query, int pageNumber) {
             this.query = query;
             this.pageNumber = pageNumber;
@@ -132,15 +123,12 @@ public class MovieApiClient {
                         List<MovieModel> currentMovies = mMovies.getValue();
                         currentMovies.addAll(list);
                         mMovies.postValue(currentMovies);
-
-
                     }
 
                 }else{
                     String error = response.errorBody().string();
                     Log.v("Tagy", "Error " +error);
                     mMovies.postValue(null);
-
                 }
 
             } catch (IOException e) {
@@ -156,9 +144,7 @@ public class MovieApiClient {
                     Credentials.API_KEY,
                     query,
                     pageNumber
-
             );
-
         }
         private void cancelRequest(){
             Log.v("Tag", "Cancelling Search Request" );
@@ -167,11 +153,8 @@ public class MovieApiClient {
     }
 
     private class RetrieveMoviesRunnablePop implements Runnable{
-
         private int pageNumber;
         boolean cancelRequest;
-
-
         public RetrieveMoviesRunnablePop(int pageNumber) {
 
             this.pageNumber = pageNumber;
@@ -181,11 +164,8 @@ public class MovieApiClient {
         @Override
         public void run() {
             try{
-
                 Response response2 = getPop(pageNumber).execute();
-
                 if (cancelRequest) {
-
                     return;
                 }
                 if (response2.code() == 200){
@@ -197,9 +177,6 @@ public class MovieApiClient {
                         List<MovieModel> currentMovies = mMoviesPop.getValue();
                         currentMovies.addAll(list);
                         mMoviesPop.postValue(currentMovies);
-
-
-
                     }
 
                 }else{
@@ -212,12 +189,7 @@ public class MovieApiClient {
             } catch (IOException e) {
                 e.printStackTrace();
                 mMoviesPop.postValue(null);
-
             }
-
-
-
-
         }
 
         // Search Method/ query
@@ -225,7 +197,6 @@ public class MovieApiClient {
             return Service.getMovieApi().getPopular(
                     Credentials.API_KEY,
                     pageNumber
-
             );
 
         }
@@ -233,7 +204,5 @@ public class MovieApiClient {
             Log.v("Tag", "Cancelling Search Request" );
             cancelRequest = true;
         }
-
     }
-
 }
